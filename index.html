@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title> </title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
  <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -38,7 +38,7 @@
        </div>
     </div>
 
-    <div class="image-content">
+    <div  class="image-content" >
       <img src="bg.webp" alt="" >
     </div>
 
@@ -50,12 +50,12 @@
 
     <div class="container1">
     
-     <div class="image-content1">
+     <div class="image-content1" data-aos="fade-right">
      
        <img src="p1.webp" alt="" height="500px">
      </div>
 
-     <div class="text-section">
+     <div class="text-section"  data-aos="fade-left">
       <h4>Get Your Overview Back</h4>
       <h1>It's all about you</h1>
       <p>If you have ever tried tracking money before, you know that it can be extremely frustrating with the wrong tools. Moneyfy helps and empowers you by breaking down your expenses in a simple, intuitive, and understandable way.</p>
@@ -71,7 +71,7 @@
     
    
 
-    <div class="text-section">
+    <div class="text-section" data-aos="fade-right">
      <h4>MAKE IT YOUR OWN</h4>
      <h1>You're in full control</h1>
     <p> We have carefully, curated the default categories to
@@ -87,7 +87,7 @@
         </p>
    </div>
 
-   <div class="image-content1">
+   <div class="image-content1"  data-aos="fade-left">
     <img src="p2.png" alt="" height="500px">
   </div>
 
@@ -96,10 +96,13 @@
 
   <div class="ctc">
     <h2>What users think about Financefold</h2>
-    <div class="reviews-container">
+    <div class="reviews-container" data-aos="flip-left"
+    data-aos-easing="ease-out-cubic"
+    data-aos-duration="2000"> >
       <div class="review-card">
         <h3>Neha Singh</h3>
-        <div class="stars">★★★★★</div>
+        <div class="stars">★★★★★</div >
+          
         <p class="review-text">This app is clean, clear, and very useful (and fun!) to use! You can record any purchase you want, and create your own categories. The UI is clean and easy to use as well. I highly recommend this app for anyone who likes to keep track of their spending.</p>
       </div>
       <div class="review-card">
@@ -152,11 +155,9 @@
   </div> 
 
   <script src="App.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-      AOS.init();
-          
-      
-    </script>
+    AOS.init();
+  </script>
 </body>
 </html>

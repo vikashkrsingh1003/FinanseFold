@@ -34,6 +34,7 @@ function addExpense() {
         localStorage.setItem('expenses', JSON.stringify(expenses));
         renderExpenses();
     }
+    alert("Expanse added successfully")
 }
 
 function renderExpenses(filteredExpenses = expenses) {
@@ -78,20 +79,21 @@ function showSummaryPage() {
     renderExpenses();
 }
 
-function editExpense(index) {
-    const expense = expenses[index];
-    document.getElementById('expenseName').value = expense.name;
-    document.getElementById('expenseAmount').value = expense.amount;
-    document.getElementById('expenseCategory').value = expense.category;
-    document.getElementById('expenseDate').value = expense.date;
-    editIndex = index;
-}
+// function editExpense(index) {
+//     const expense = expenses[index];
+//     document.getElementById('expenseName').value = expense.name;
+//     document.getElementById('expenseAmount').value = expense.amount;
+//     document.getElementById('expenseCategory').value = expense.category;
+//     document.getElementById('expenseDate').value = expense.date;
+//     editIndex = index;
+  
+// }
 
 function deleteExpense(index) {
     expenses.splice(index, 1);
     localStorage.setItem('expenses', JSON.stringify(expenses));
     renderExpenses();
-    alert("Expanse delete succsses")
+    alert("Expanse delete success")
 }
 
 updateBalance();
