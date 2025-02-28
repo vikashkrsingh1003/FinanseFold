@@ -1,6 +1,6 @@
 let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
 let totalIncome = JSON.parse(localStorage.getItem('totalIncome')) || 0;
-let editIndex = null;
+//let editIndex = null;
 
 function updateBalance() {
     let totalExpense = expenses.reduce((sum, expense) => sum + parseFloat(expense.amount), 0);
@@ -25,13 +25,14 @@ function addExpense() {
     const category = document.getElementById('expenseCategory').value;
     const date = document.getElementById('expenseDate').value;
     if (name && amount && category && date) {
-        if (editIndex === null) {
+       // if (editIndex === null) {
             expenses.push({ name, amount, category, date });
-        } else {
-            expenses[editIndex] = { name, amount, category, date };
-            editIndex = null;
-        }
+    //    } else {
+    //         expenses[editIndex] = { name, amount, category, date };
+    //         editIndex = null;
+    //     }
         localStorage.setItem('expenses', JSON.stringify(expenses));
+        updateBalance();
         renderExpenses();
     }
     alert("Expanse added successfully")
@@ -40,7 +41,9 @@ function addExpense() {
 function renderExpenses(filteredExpenses = expenses) {
     const expenseList = document.getElementById('expenseList');
     expenseList.innerHTML = '';
+    let total =0;
     filteredExpenses.forEach((expense, index) => {
+        total += parseFloat(expense.amount);
         expenseList.innerHTML += `
             <tr>
                 <td>${expense.name}</td>
@@ -52,6 +55,7 @@ function renderExpenses(filteredExpenses = expenses) {
             </tr>
         `;
     });
+    document.getElementById('summaryTotalExpenses').textContent = `₹${total}`;
 }
 
 
