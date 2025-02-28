@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+    
+    <nav class="navbar">
+        <div class="nv1"><img src="logon.webp" alt="" height="80px">
+            <h1>Financefold</h1>
+            </div> 
+        
+        <div class="nav-links">
+          <a href="index.html"  >Home</a>
+          <a href="#" onclick="showMainPage()" >Expense</a>
+          <a href="#"  onclick="showSummaryPage()">Summary</a>
+
+          <a href="#">Features</a>
+          
+          <a href="#" class="sign-up-btn">Sign Up</a>
+        </div>
+      </nav>
+    
+      
+      <div class="main">
+      
+    <div id="mainPage">
+        <h2>Financefold Tracker</h2>
+        <h3>Income: ₹<span id="totalIncome">0</span></h3>
+        <h3>Current Balance: ₹<span id="currentBalance">0</span></h3>
+        
+        <input type="number" id="incomeAmount" placeholder="Add Income">
+        <button onclick="addIncome()">Add Income</button>
+
+        <h3>Add Expense</h3>
+        <input type="text" id="expenseName" placeholder="Expense Name">
+        <input type="number" id="expenseAmount" placeholder="Amount">
+        <select id="expenseCategory">
+            <option value="Grocery">Grocery</option>
+            <option value="Stationery">Stationery</option>
+            <option value="Dairy Product">Dairy Product</option>
+            <option value="Beauty Product">Beauty Product</option>
+        </select>
+        <input type="date" id="expenseDate" placeholder="Date">
+        <button id="submitBtn" onclick="addExpense()">Add Expense</button>
+    </div>
+
+    <div id="summaryPage" style="display: none;">
+        <h2>Expense Summary</h2>
+        <label for="filterCategory">Filter by Category:</label>
+        <select id="filterCategory">
+            <option value="all">All</option>
+            <option value="Grocery">Grocery</option>
+            <option value="Stationery">Stationery</option>
+            <option value="Dairy Product">Dairy Product</option>
+            <option value="Beauty Product">Beauty Product</option>
+        </select>
+        
+        <label for="filterMonth">Filter by Month:</label>
+        <input type="month" id="filterMonth">
+        
+        <button onclick="filterExpenses()">Apply Filter</button>
+        <button onclick="resetFilters()">Reset</button>
+        
+        <p>Total Expenses: <span id="summaryTotalExpenses">₹0</span></p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Amount</th>
+                    <th>Category</th>
+                    <th>Date</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody id="expenseList">
+                
+            </tbody>
+        </table>
+    </div>
+
+      </div>
+
+
+
+      <div class="ctc">
+        <h2>What users think about Financefold</h2>
+        <div class="reviews-container">
+          <div class="review-card">
+            <h3>Neha Singh</h3>
+            <div class="stars">★★★★★</div>
+            <p class="review-text">This app is clean, clear, and very useful (and fun!) to use! You can record any purchase you want, and create your own categories. The UI is clean and easy to use as well. I highly recommend this app for anyone who likes to keep track of their spending.</p>
+          </div>
+          <div class="review-card">
+            <h3>Sonu sharma</h3>
+            <div class="stars">★★★★★</div>
+            <p class="review-text">THIS APP IS AMAZING! I literally spent EIGHT HOURS trying to find a good budgeting app. This app HELPS you budget your money, instead of trying to do it for you and presenting you with a bulk of unnecessary information. Love it. 100/100</p>
+          </div>
+          <div class="review-card">
+            <h3> Sidharth Dubey</h3>
+            <div class="stars">★★★★★</div>
+            <p class="review-text">I’ve been looking for the best and most reliable user-friendly money management app for years, and I finally found Financefold. I’ve been a hardcore user since December 2025 with the premium version which is 100% worth it. I have absolutely no complaints!</p>
+          </div>
+        </div>
+            </div>
+            
+    
+    
+        <div>
+        <footer class="ft">
+    
+           <ul>
+             <img src="logon.webp" alt="">
+             <p>&copy; 2025 Financefold, Inc. All rights reserved.</p>
+           </ul>
+    
+           <ul>
+            <h3>Quick link</h3>
+            <li>Home</li>
+            <li>About</li>
+            <li>Features</li>
+            <li>Contact</li>
+           </ul>
+           <ul>
+            <h3>Our Services</h3>
+            <li>Personal Finance Tracker</li>
+            <li>Budgeting Tools</li>
+            <li>Investment Tracking</li>
+            <li>Reporting & Analytics</li>
+           </ul>
+    
+           <ul>
+            <h3>Contact with Us</h3>
+            <li>Facebook</li>
+            <li>Twitter</li>
+            <li>Instagram</li>
+            <li>Linkedin</li>
+           </ul>
+          
+          </footer>
+      </div> 
+
+      <script src="App.js"></script>
+
+</body>
+</html>

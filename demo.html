@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Finance Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        input, select, button {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        li.income {
+            color: green;
+        }
+        li.expense {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Personal Finance Tracker</h1>
+        <form id="transaction-form">
+            <input type="text" id="description" placeholder="Description" required>
+            <input type="number" id="amount" placeholder="Amount" required>
+            <select id="type" required>
+                <option value="" disabled selected>Select Type</option>
+                <option value="income">Income</option>
+                <option value="expense">Expense</option>
+            </select>
+            <button type="submit">Add Transaction</button>
+        </form>
+        <h2>Transactions</h2>
+        <ul id="transaction-list"></ul>
+        <h3>Total Balance: $<span id="total-balance">0.00</span></h3>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const transactionForm = document.getElementById('transaction-form');
+            const transactionList = document.getElementById('transaction-list');
+            const totalBalance = document.getElementById('total-balance');
+
+            let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
+
+            function updateLocalStorage() {
+                localStorage.setItem('transactions', JSON.stringify(transactions));
+            }
+
+            function addTransaction(e) {
+                e.preventDefault();
+
+                const description = document.getElementById('description').value;
+                const amount = parseFloat(document.getElementById('amount').value);
+                const type = document.getElementById('type').value;
+
+                const transaction = {
+                    id: Date.now(),
+                    description,
+                    amount,
+                    type
+                };
+
+                transactions.push(transaction);
+                updateLocalStorage();
+                renderTransactions();
+                transactionForm.reset();
+            }
+
+            function deleteTransaction(id) {
+                transactions = transactions.filter(transaction => transaction.id !== id);
+                updateLocalStorage();
+                renderTransactions();
+            }
+
+            function renderTransactions() {
+                transactionList.innerHTML = '';
+                let balance = 0;
+
+                transactions.forEach(transaction => {
+                    const li = document.createElement('li');
+                    li.classList.add(transaction.type);
+                    li.innerHTML = `
+                        ${transaction.description}: $${transaction.amount.toFixed(2)}
+                        <button onclick="deleteTransaction(${transaction.id})">Delete</button>
+                    `;
+                    transactionList.appendChild(li);
+
+                    balance += transaction.type === 'income' ? transaction.amount : -transaction.amount;
+                });
+
+                totalBalance.textContent = balance.toFixed(2);
+            }
+
+            transactionForm.addEventListener('submit', addTransaction);
+            renderTransactions();
+
+            // Expose deleteTransaction to the global scope
+            window.deleteTransaction = deleteTransaction;
+        });
+    </script>
+</body>
+</html>

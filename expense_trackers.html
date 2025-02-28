@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <style>
+        .main{
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        input, select, button {
+            padding: 10px;
+            margin: 5px;
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+        .delete-btn, .edit-btn {
+            cursor: pointer;
+            padding: 5px 10px;
+            border: none;
+        }
+        .delete-btn {
+            background: red;
+            color: white;
+        }
+        .edit-btn {
+            background: blue;
+            color: white;
+        }
+       
+       
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">Finance Tracker</div>
+        <div>
+            <a href="#" onclick="showMainPage()">Home</a>
+            <a href="#" onclick="showSummaryPage()">Summary</a>
+            <a href="#">Support</a>
+            <a href="#">Login</a>
+            <a href="#">Sign Up</a>
+        </div>
+    </div>
+    
+    <div class="main">
+    <div id="mainPage">
+        <h2>Expense Tracker</h2>
+        
+        <h3>Income: ₹<span id="totalIncome">0</span></h3>
+        <h3>Current Balance: ₹<span id="currentBalance">0</span></h3>
+        
+        <input type="number" id="incomeAmount" placeholder="Add Income">
+        <button onclick="addIncome()">Add Income</button>
+
+        <h3>Add Expense</h3>
+        <input type="text" id="expenseName" placeholder="Expense Name">
+        <input type="number" id="expenseAmount" placeholder="Amount">
+        <select id="expenseCategory">
+            <option value="Grocery">Grocery</option>
+            <option value="Stationery">Stationery</option>
+            <option value="Dairy Product">Dairy Product</option>
+            <option value="Beauty Product">Beauty Product</option>
+        </select>
+        <input type="date" id="expenseDate" placeholder="Date">
+        <button id="submitBtn" onclick="addExpense()">Add Expense</button>
+    </div>
+
+    <div id="summaryPage" style="display: none;">
+        <h2>Expense Summary</h2>
+        <label for="filterCategory">Filter by Category:</label>
+        <select id="filterCategory">
+            <option value="all">All</option>
+            <option value="Grocery">Grocery</option>
+            <option value="Stationery">Stationery</option>
+            <option value="Dairy Product">Dairy Product</option>
+            <option value="Beauty Product">Beauty Product</option>
+        </select>
+        
+        <label for="filterMonth">Filter by Month:</label>
+        <input type="month" id="filterMonth">
+        
+        <button onclick="filterExpenses()">Apply Filter</button>
+        <button onclick="resetFilters()">Reset</button>
+        
+        <p>Total Expenses: <span id="summaryTotalExpenses">₹0</span></p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Amount</th>
+                    <th>Category</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody id="expenseList"></tbody>
+        </table>
+    </div>
+    
+    </div>
+    <div class="footer">
+        <p>&copy; 2025 Finance Tracker. All rights reserved.</p>
+        <p><a href="#">How It Works</a> | <a href="#">Contact Us</a> | <a href="#">Privacy Policy</a></p>
+    </div>
+
+    <script>
+        let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
+        let totalIncome = JSON.parse(localStorage.getItem('totalIncome')) || 0;
+
+        function updateBalance() {
+            let totalExpense = expenses.reduce((sum, expense) => sum + parseFloat(expense.amount), 0);
+            let balance = totalIncome - totalExpense;
+            document.getElementById('totalIncome').textContent = totalIncome;
+            document.getElementById('currentBalance').textContent = balance;
+        }
+
+        function addIncome() {
+            let income = parseFloat(document.getElementById('incomeAmount').value);
+            if (!isNaN(income) && income > 0) {
+                totalIncome += income;
+                localStorage.setItem('totalIncome', JSON.stringify(totalIncome));
+                document.getElementById('incomeAmount').value = '';
+                updateBalance();
+            }
+        }
+
+        function renderExpenses(filteredExpenses = expenses) {
+            const expenseList = document.getElementById('expenseList');
+            expenseList.innerHTML = '';
+            let total = 0;
+            filteredExpenses.forEach((expense) => {
+                total += parseFloat(expense.amount);
+                expenseList.innerHTML += `
+                    <tr>
+                        <td>${expense.name}</td>
+                        <td>₹${expense.amount}</td>
+                        <td>${expense.category}</td>
+                        <td>${expense.date}</td>
+                    </tr>
+                `;
+            });
+            document.getElementById('summaryTotalExpenses').textContent = `₹${total}`;
+            localStorage.setItem('expenses', JSON.stringify(expenses));
+            updateBalance();
+        }
+
+        function addExpense() {
+            const name = document.getElementById('expenseName').value;
+            const amount = document.getElementById('expenseAmount').value;
+            const category = document.getElementById('expenseCategory').value;
+            const date = document.getElementById('expenseDate').value;
+            if (name && amount && category && date) {
+                expenses.push({ name, amount, category, date });
+                localStorage.setItem('expenses', JSON.stringify(expenses));
+                updateBalance();
+            }
+        }
+
+        function showSummaryPage() {
+            document.getElementById('mainPage').style.display = 'none';
+            document.getElementById('summaryPage').style.display = 'block';
+            renderExpenses();
+        }
+
+        function showMainPage() {
+            document.getElementById('mainPage').style.display = 'block';
+            document.getElementById('summaryPage').style.display = 'none';
+        }
+
+        updateBalance();
+        renderExpenses();
+    </script>
+</body>
+</html>

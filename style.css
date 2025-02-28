@@ -1,0 +1,226 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  
+  }
+  .navbar {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+     background:#3674B5;
+  }
+  .nv1 {
+
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .nav-links a{
+  
+    margin:0 14px ;
+    
+    text-decoration: none;
+    color: #1b1919;
+  }
+  .nav-links{
+    padding-top: 26px;
+   
+  }
+
+  .sign-up-btn {
+    background: #D1F8EF;
+    color: #f8e8e8;
+    padding: 8px 16px;
+    border-radius: 20px;
+    text-decoration: none;
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    margin-top: 100px;
+    padding-top: 25px;
+  }
+  .text-content {
+    flex: 1;
+    padding: 40px;
+  }
+  .text-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+  .text-content p {
+    color: #555;
+    line-height: 1.6;
+  }
+  .buttons {
+    margin-top: 20px;
+  }
+  .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  .btn-primary {
+    background: #D1F8EF;
+    color: black;
+  }
+  .btn-secondary {
+    background: #e4e4e4;
+    color: #777;
+  }
+  .image-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+  .image-content img {
+    margin-left: 450px;
+    max-width: 100%;
+    border-radius: 10px;
+  
+  }
+
+  .container1{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+   
+    margin-top: 70px;
+    padding: 100px;
+
+  }
+  .image-content1{
+   
+    max-width: 300px;
+    border-radius: 25px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  .image-content1 img{
+    border-radius: 25px;
+  }
+  .text-section{
+    max-width: 500px;
+   
+  }
+
+  .text-section h1 {
+    color: #082c4f;
+  }
+
+  .text-section p {
+    color: #4a4a4a;
+    line-height: 1.5;
+  }
+ 
+  .ft{
+     background-color: #A1E3F9;
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+  }
+
+  .ft ul li{
+ list-style: none;
+  margin: 0 0px 13px;
+  } 
+
+  .ctc{
+    font-family: Arial, sans-serif;
+    background-color: #ecfdf5;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+ .ctc h2 {
+    color: #2d3748;
+    font-size: 2rem;
+  }
+
+  .reviews-container {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .review-card{
+    background-color: #1a202c;
+    color: #f7fafc;
+    padding: 20px;
+    border-radius: 12px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .review-card h3 {
+    color: #48bb78;
+    margin-left: 80px;
+  }
+
+  .stars {
+    color: #ffd700;
+   // margin-bottom: 10px;
+    margin-left: 105px;
+  }
+
+  .review-text {   
+    font-size: 1rem;
+  } 
+
+
+    /* this css is main.html */
+
+    .main{
+      font-family: Arial, sans-serif;
+      max-width:100%;
+      margin: 100px;
+      padding: 40px;
+     
+  }
+  input, select, button {
+      padding: 10px;
+      margin: 5px;
+      border-radius: 10px;
+      
+  }
+  button{
+    background-color: #A1E3F9;
+  }
+  table {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+  }
+  th, td {
+      padding: 10px;
+      border: 1px solid #ccc;
+      text-align: left;
+  }
+  .delete-btn, .edit-btn {
+      cursor: pointer;
+      padding: 5px 10px;
+      border: none;
+      border-radius: 10px;
+  }
+  .delete-btn {
+      background: red;
+      color: white;
+      border-radius: 10px;
+  }
+  .edit-btn {
+      background: blue;
+      color: white;
+      border-radius: 10px;
+  }
+ 
