@@ -136,11 +136,46 @@
             }
         }
 
+        function addExpense() {
+            const name = document.getElementById('expenseName').value;
+            const amount = document.getElementById('expenseAmount').value;
+            const category = document.getElementById('expenseCategory').value;
+            const date = document.getElementById('expenseDate').value;
+            if (name && amount && category && date) {
+                expenses.push({ name, amount, category, date });
+                localStorage.setItem('expenses', JSON.stringify(expenses));
+                updateBalance();
+                renderExpenses();
+            }
+        }
+
+        function filterExpenses() {
+            const category = document.getElementById('filterCategory').value;
+            const month = document.getElementById('filterMonth').value;
+            let filtered = expenses;
+
+            if (category !== 'all') {
+                filtered = filtered.filter(expense => expense.category === category);
+            }
+
+            if (month) {
+                filtered = filtered.filter(expense => expense.date.startsWith(month));
+            }
+
+            renderExpenses(filtered);
+        }
+
+        function resetFilters() {
+            document.getElementById('filterCategory').value = 'all';
+            document.getElementById('filterMonth').value = '';
+            renderExpenses(expenses);
+        }
+
         function renderExpenses(filteredExpenses = expenses) {
             const expenseList = document.getElementById('expenseList');
             expenseList.innerHTML = '';
             let total = 0;
-            filteredExpenses.forEach((expense) => {
+            filteredExpenses.forEach(expense => {
                 total += parseFloat(expense.amount);
                 expenseList.innerHTML += `
                     <tr>
@@ -152,20 +187,6 @@
                 `;
             });
             document.getElementById('summaryTotalExpenses').textContent = `₹${total}`;
-            localStorage.setItem('expenses', JSON.stringify(expenses));
-            updateBalance();
-        }
-
-        function addExpense() {
-            const name = document.getElementById('expenseName').value;
-            const amount = document.getElementById('expenseAmount').value;
-            const category = document.getElementById('expenseCategory').value;
-            const date = document.getElementById('expenseDate').value;
-            if (name && amount && category && date) {
-                expenses.push({ name, amount, category, date });
-                localStorage.setItem('expenses', JSON.stringify(expenses));
-                updateBalance();
-            }
         }
 
         function showSummaryPage() {
@@ -182,5 +203,6 @@
         updateBalance();
         renderExpenses();
     </script>
+   
 </body>
 </html>

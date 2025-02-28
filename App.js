@@ -36,8 +36,8 @@ function renderExpenses(filteredExpenses = expenses) {
                 <td>₹${expense.amount}</td>
                 <td>${expense.category}</td>
                 <td>${expense.date}</td>
-         <td><button onclick= "dlt( '${expense.name}') "> Delete </button> </td>
-        <td><button onclick= "myedit( '${expense.id}') "> EDIT </button> </td>
+        //  <td><button onclick= "dlt( '${expense.name}') "> Delete </button> </td>
+        //  <td><button onclick= "myedit( '${expense.id}') "> EDIT </button> </td>
  
             </tr>
         `;
@@ -61,24 +61,24 @@ function addExpense() {
     alert("Expances added sucussesfully")
 }
 
-function dlt() {
-    const name = document.getElementById('expenseName').value;
+// function dlt() {
+//     const name = document.getElementById('expenseName').value;
     
-    if (name) {
-        let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
+//     if (name) {
+//         let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
 
-        // Filter out the expense with the given name
-        expenses = expenses.filter(expense => expense.name !== name);
+//         // Filter out the expense with the given name
+//         expenses = expenses.filter(expense => expense.name !== name);
 
-        // Save the updated list back to localStorage
-        localStorage.setItem('expenses', JSON.stringify(expenses));
+//         // Save the updated list back to localStorage
+//         localStorage.setItem('expenses', JSON.stringify(expenses));
 
-        updateBalance();
-        alert("Expense deleted successfully");
-    } else {
-        alert("Please enter a valid expense name to delete");
-    }
-}
+//         updateBalance();
+//         alert("Expense deleted successfully");
+//     } else {
+//         alert("Please enter a valid expense name to delete");
+//     }
+// }
 
 
 function showSummaryPage() {
