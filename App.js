@@ -36,7 +36,7 @@ function renderExpenses(filteredExpenses = expenses) {
                 <td>₹${expense.amount}</td>
                 <td>${expense.category}</td>
                 <td>${expense.date}</td>
-         <td><button onclick= "mydel( '${expense.id}') "> Delete </button> </td>
+         <td><button onclick= "dlt( '${expense.name}') "> Delete </button> </td>
         <td><button onclick= "myedit( '${expense.id}') "> EDIT </button> </td>
  
             </tr>
@@ -63,16 +63,22 @@ function addExpense() {
 
 function dlt() {
     const name = document.getElementById('expenseName').value;
-    const amount = document.getElementById('expenseAmount').value;
-    const category = document.getElementById('expenseCategory').value;
-    const date = document.getElementById('expenseDate').value;
-    if (name && amount && category && date) {
-        localStorage.clear();
-        updateBalance();
-    }
-    alert("dlt sucussesfully")
-}
+    
+    if (name) {
+        let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
 
+        // Filter out the expense with the given name
+        expenses = expenses.filter(expense => expense.name !== name);
+
+        // Save the updated list back to localStorage
+        localStorage.setItem('expenses', JSON.stringify(expenses));
+
+        updateBalance();
+        alert("Expense deleted successfully");
+    } else {
+        alert("Please enter a valid expense name to delete");
+    }
+}
 
 
 function showSummaryPage() {
