@@ -1,3 +1,5 @@
+
+
 const sign = () => {
     let userdata = {
         name: document.querySelector('#name').value.trim(),
@@ -11,9 +13,13 @@ const sign = () => {
     }
 
     localStorage.setItem("userdata", JSON.stringify(userdata));
+   
     alert("Account Created Successfully! You can now log in.");
 };
 
+ 
+// let data = JSON.parse(localStorage.getItem('userdata'));
+// console.log(data);
 function log() {
     let logindata = {
         loginemail: document.querySelector('#loginemail').value.trim(),
@@ -27,12 +33,11 @@ function log() {
         return false;
     }
 
-   
     if ((data.email === logindata.loginemail || data.name === logindata.loginemail) && data.password === logindata.loginpassword) {
         alert(`Login Successful! Welcome back, ${data.name}`);
         
        
-        window.location.href = "home.html"; 
+        window.location.href = "index.html"; 
         return true;
     }else {
         Swal.fire({
@@ -42,4 +47,8 @@ function log() {
         });
         return false;
     }
+
+   
+
+  
 }

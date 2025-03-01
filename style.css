@@ -24,18 +24,23 @@ body {
     text-decoration: none;
     color: #1b1919;
   }
+  .nav-links a:hover{
+    color: wheat;
+    text-decoration: underline;
+    text-shadow: #082c4f;
+  }
   .nav-links{
     padding-top: 26px;
    
   }
 
-  .sign-up-btn {
+  /* .sign-up-btn {
     background: #D1F8EF;
     color: #f8e8e8;
     padding: 8px 16px;
     border-radius: 20px;
     text-decoration: none;
-  }
+  } */
 
   .container {
     display: flex;
@@ -75,6 +80,10 @@ body {
   .btn-secondary {
     background: #e4e4e4;
     color: #777;
+  }
+  .btn-secondary:hover{
+    background-color: rgb(28, 129, 230);
+    color: black;
   }
   .image-content {
     flex: 1;
@@ -214,13 +223,19 @@ body {
       border-radius: 10px;
   }
   .delete-btn {
-      background: red;
+      background: rgb(214, 60, 60);
       color: white;
       border-radius: 10px;
+      padding: 10px;
+      padding-left: 20px;
+      padding-right: 20px;
   }
   .edit-btn {
-      background: blue;
-      color: white;
+      background: #4fb49c ;
+      color :#1b1919;
       border-radius: 10px;
+      padding: 10px;
+      padding-left: 40px;
+      padding-right: 40px;
   }
  
