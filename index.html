@@ -16,12 +16,14 @@
         }
         body {
             background-color: #f3e8ff;
+           
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
         }
         .container {
+            
             display: flex;
             width: 800px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -29,18 +31,20 @@
             overflow: hidden;
         }
         .left-section {
-            /* //width: 40%;
+            width: 40%;
             background: linear-gradient(135deg, #6a0dad, #a32cc4);
-            color: white; */
+            color: white; 
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-           /* // text-align: center;
-            padding: 20px; */
+           text-align: center;
+            padding: 20px;
+           
         }
         .left-section h2 {
             font-weight: 600;
+            margin-top: 150px;
         }
         .right-section {
             width: 60%;
@@ -95,12 +99,14 @@
 <body>
     <div class="container">
         <div class="left-section">
-           
-            <img src="p1.webp" alt="Gifts Image" height="550px">
-        </div>
-        <div class="right-section">
+           <img src="user.png" alt="" height="110px">
             <h2>Welcome!</h2>
             <p>Register to join the Financefold.</p>
+              <h1> </h1>
+            <!-- <img src="p1.webp" alt="Gifts Image" height="550px"> -->
+        </div>
+        <div class="right-section">
+          
             <form action="login.html" onsubmit="return sign()">
                 <div class="input-group">
                     <label>Username</label>
